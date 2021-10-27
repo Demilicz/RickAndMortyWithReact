@@ -1,15 +1,17 @@
 import { useQuery, gql } from "@apollo/client";
 
-// interface Character = {
-//   name: String,
-//   id: String,
-//   image: String,
-//   gender: String,
-//   species: String,
-//   episode: {
-//     episode: String
-//   }
-// };
+interface Character {
+  name: string;
+  id: string;
+  image: string;
+  gender: string;
+  species: string;
+  episode: Episode[]
+  };
+
+interface Episode {
+  episode: string
+};
 
 
 
@@ -39,14 +41,16 @@ function AllCharactersList() {
 
   if(loading) return <div>It's loading...</div>
 
-  // return <div> {data.characters.results.map( char => {
-  //   return  <div>
-  //     {/* <img src={char.image}/> */}
-  //   </div>
+  return <div> {data.characters.results.map( (char: Character) => {
 
-  // })}</div>
 
-  return <div></div>
+    return  <div>
+      <img src={char.image} alt={char.name}/>
+    </div>
+
+  })}</div>
+
+
 }
 
 export default AllCharactersList;
