@@ -10,9 +10,18 @@ function Header() {
       margin: 32,
       marginLeft: 140,
       marginRight: 80
-    }}></div>
-
-
+    }}>
+    </div>
+    <form action="" className="search_form">
+      <label className="search_label">Search by</label>
+      <select className="search_select" >
+        <option value="Name">Name</option>
+        <option value="Identifier">Identifier</option>
+        <option value="Episode">Episode</option>
+      </select>
+      <input className="search_input"/>
+      <button className="_icon-search_black_24dp search_button"></button>
+    </form>
   </div>
 }
 

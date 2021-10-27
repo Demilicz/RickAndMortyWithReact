@@ -1,3 +1,59 @@
 .App {
+  margin: 0 auto;
   max-width: 1920px;
 }
+
+.header {
+  border-bottom: 1px solid rgba(229, 234, 244, 1);
+  display: flex;
+  align-items: center;
+}
+
+.search_form {
+  width: 505px;
+  height: 56px;
+  border: 1px solid #a9b1bd;
+  border-radius: 10px;
+  color: #a9b1bd;
+  display: flex;
+  align-items: center;
+}
+
+.search_select {
+  width: 130px;
+  border-right: 1px solid #a9b1bd;
+  height: 100%;
+  font-family: "Poppins";
+  color: #a9b1bd;
+  font-size: 16px;
+  padding-left: 16px;
+}
+
+.search_label {
+  width: 130px;
+  border-right: 1px solid #a9b1bd;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.search_button {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  color:rgba(17, 176, 200, 1);
+  background: transparent;
+}
+
+.search_input{
+  padding-left: 15px;
+  font-family: "Poppins";
+  color: #a9b1bd;
+  width: 200px;
+  font-size: 16px;
+}
+
+

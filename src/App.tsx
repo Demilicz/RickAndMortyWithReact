@@ -1,13 +1,13 @@
-import React from 'react';
 import './assets/style.css';
-import  CharactersList  from './Components/CharactersList';
+import './App.css'
+import  AllCharactersList  from './Components/AllCharactersList';
 import Header from "./Components/Header";
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <CharactersList/>
+      <AllCharactersList/>
     </div>
   );
 }
