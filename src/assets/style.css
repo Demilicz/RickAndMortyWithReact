@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'icons';
+  src:
+    url('icons/icons.ttf?p6g6cd') format('truetype'),
+    url('icons/icons.woff?p6g6cd') format('woff'),
+    url('icons/icons.svg?p6g6cd#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/poppins-v15-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/poppins-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/poppins-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/poppins-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/poppins-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/poppins-v15-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/poppins-v15-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../assets/fonts/poppins-v15-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/poppins-v15-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/poppins-v15-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../assets/fonts/poppins-v15-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../assets/fonts/poppins-v15-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+[class^="_icon-"], [class*=" _icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-Group-24:before {
+  content: "\e906";
+}
+._icon-close_black_24dp:before {
+  content: "\e900";
+}
+._icon-female_black_24dp:before {
+  content: "\e901";
+}
+._icon-male_black_24dp:before {
+  content: "\e902";
+}
+._icon-remove_black_24dp:before {
+  content: "\e903";
+}
+._icon-search_black_24dp:before {
+  content: "\e904";
+}
+._icon-star_black_24dp:before {
+  content: "\e905";
+}
