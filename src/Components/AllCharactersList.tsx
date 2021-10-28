@@ -17,7 +17,7 @@ interface Episode {
 
 const GET_CHARACTERS = gql`
   query {
-    characters(page: 8) {
+    characters(page: 1) {
       results {
         name
         id
@@ -54,7 +54,8 @@ function AllCharactersList() {
                 { char.gender === "Female" && <i className="_icon-female_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
                 { char.gender === "unknown" && <i className="_icon-remove_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
                 { char.gender === "Genderless" && <i className="_icon-close_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
-                {char.gender}</div>
+                <p>{char.gender}</p>
+                </div>
               <div className="card-species">{char.species}</div>
               <div className="card-episode">{char.episode[char.episode.length - 1].episode}</div>
               <button className="card-button">

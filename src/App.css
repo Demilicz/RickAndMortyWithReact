@@ -71,7 +71,7 @@
 }
 
 .card-image {
-  margin: 8px 124px 8px 140px;
+  margin: 8px 124px 8px 25px;
 }
 
 .card-id {
@@ -80,11 +80,14 @@
 
 .card-name {
   width: 202px;
-  text-overflow: ellipsis;
+
 }
 
 .card-gender {
   width: 212px;
+  display: flex;
+  align-items: center;
+
 }
 
 .card-species {
