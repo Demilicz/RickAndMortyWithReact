@@ -9,6 +9,8 @@
   align-items: center;
 }
 
+/* Search Section */
+
 .search_form {
   width: 505px;
   height: 56px;
@@ -57,3 +59,55 @@
 }
 
 
+/* Card Section */
+
+.card {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins";
+  color: #a9b1bd;
+  font-size: 16px;
+  border-bottom: 1px solid #E5EAF4;
+}
+
+.card-image {
+  margin: 8px 124px 8px 140px;
+}
+
+.card-id {
+  width: 222px;
+}
+
+.card-name {
+  width: 202px;
+  text-overflow: ellipsis;
+}
+
+.card-gender {
+  width: 212px;
+}
+
+.card-species {
+  width: 212px;
+}
+
+.card-episode {
+  width: 226px;
+}
+
+
+.card-button {
+  width: 43px;
+  height: 43px;
+  border: 2px solid #11B0C8;
+  background:#fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-icon {
+  color: #11B0C8;
+  font-size: 24px;
+}
