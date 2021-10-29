@@ -26,7 +26,7 @@ export default function LinksAndDescribe() {
       color: "#A9B1BD"
       }}>
 
-      <p style={{marginLeft: 25}}>Photo</p>
+      <p style={{marginLeft: 140}}>Photo</p>
       <p style={{marginLeft: 120}}>Character ID</p>
       <p style={{marginLeft: 120}}>Name</p>
       <p style={{marginLeft: 153}}>Gender</p>

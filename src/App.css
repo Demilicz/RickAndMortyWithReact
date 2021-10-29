@@ -71,7 +71,7 @@
 }
 
 .card-image {
-  margin: 8px 124px 8px 25px;
+  margin: 8px 124px 8px 140px;
 }
 
 .card-id {
@@ -98,7 +98,6 @@
   width: 226px;
 }
 
-
 .card-button {
   width: 43px;
   height: 43px;
@@ -114,3 +113,30 @@
   color: #11B0C8;
   font-size: 24px;
 }
+
+
+
+/* Pagination Section */
+
+.pagination{
+  display: flex;
+  margin: 40px 0 61px 136px;
+}
+
+.page-item {
+  width: 40px;
+  height: 40px;
+  margin: 0 4px 0 4px;
+  border: 1px solid #A9B1BD;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(169, 177, 189, 1);
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 16px;
+}
+
+
+
