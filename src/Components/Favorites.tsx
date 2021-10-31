@@ -1,5 +1,10 @@
+import LinksAndDescribe from './LinksAndDescribe';
+
 function Favorites() {
-  return <div>Some reason</div>
+  return <div>
+          <LinksAndDescribe/>
+
+    </div>
 }
 
 export default Favorites;

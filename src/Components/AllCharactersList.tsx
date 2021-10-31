@@ -1,4 +1,8 @@
-import { useQuery, gql } from "@apollo/client";
+import { useCharacters } from '../Query_hooks/useCharacters';
+import Pagination from './Pagination';
+import LinksAndDescribe from './LinksAndDescribe';
+import { Link } from "react-router-dom";
+
 
 interface Character {
   name: string;
@@ -15,31 +19,16 @@ interface Episode {
 
 
 
-const GET_CHARACTERS = gql`
-  query {
-    characters(page: 1) {
-      results {
-        name
-        id
-        image
-        gender
-        species
-        episode {
-          episode
-        }
-      }
-    }
-  }`;
-
 function AllCharactersList() {
-
-  const {  error , loading, data }  = useQuery(GET_CHARACTERS);
+  const {error, loading, data} =  useCharacters();
 
   if(error) return <div>Something went wrong..</div>
 
   if(loading) return <div>It's loading...</div>
 
-  return <div> {data.characters.results.map( (char: Character) => {
+  return <div>
+    <LinksAndDescribe/>
+     {data.characters.results.map( (char: Character) => {
 
     return  <div className="card" key={char.name}>
               <img src={char.image} alt={char.name} className="card-image" style={{
@@ -48,7 +37,7 @@ function AllCharactersList() {
                 objectFit: "cover"
               }}/>
               <div className="card-id">{char.id}</div>
-              <div className="card-name">{char.name}</div>
+              <Link to={`/${char.id}`} className="card-name">{char.name}</Link>
               <div className="card-gender">
                 { char.gender === "Male" && <i className="_icon-male_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
                 { char.gender === "Female" && <i className="_icon-female_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
@@ -62,7 +51,9 @@ function AllCharactersList() {
                 <i className="card-icon _icon-star_black_24dp"></i>
               </button>
             </div>
-  })}</div>
+  })}
+  <Pagination/>
+  </div>
 
 }
 

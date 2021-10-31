@@ -18,9 +18,10 @@ export default function Pagination() {
         containerClassName={'pagination'}
         pageClassName={'page-item'}
         pageLinkClassName={'page-link'}
-        previousClassName={'page-prev page-item'}
-        nextClassName={'page-next page-item'}
-        breakLinkClassName={'page-link page-item'}
+        previousClassName={'page-prev page-item page-link'}
+        nextClassName={'page-next page-item page-link'}
+        breakLinkClassName={'page-item'}
+        activeClassName={'page-active'}
       />
     </div>
   )

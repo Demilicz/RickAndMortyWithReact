@@ -138,5 +138,29 @@
   font-size: 16px;
 }
 
+.page-active {
+  background: #11B0C8;
+  color: #FFFFFF;
+}
+
+.page-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
+/* Character Section  */
+
+.Character {
+  display: flex;
+}
+.Character-content {
+  margin-left: 2rem;
+}
+
+.Character-episode {
+  margin-top: 2rem;
+}
