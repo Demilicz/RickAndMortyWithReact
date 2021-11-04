@@ -1,8 +1,12 @@
 import { useQuery, gql } from "@apollo/client";
 
+
 const GET_CHARACTERS = gql`
-  query {
-    characters(page: 1) {
+  query GetCharacters ($page: Int) {
+    characters(page: $page) {
+      info {
+        pages
+      }
       results {
         name
         id
@@ -16,8 +20,18 @@ const GET_CHARACTERS = gql`
     }
   }`;
 
-export  const useCharacters = () => {
-  const {  error , loading, data }  = useQuery(GET_CHARACTERS);
+
+
+
+export  const useCharacters = (page: number) => {
+  const {  error , loading, data }  = useQuery(GET_CHARACTERS, {
+    variables: {
+      page,
+    }
+  })
+
+
+
 
   return {
     error,

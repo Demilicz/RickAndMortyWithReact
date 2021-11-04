@@ -6,6 +6,8 @@ query GetCharacter($id: ID!){
     name
     gender
     image
+    status
+    id
     episode {
       name
       episode
@@ -13,7 +15,7 @@ query GetCharacter($id: ID!){
   }
 }`;
 
- const useCharacters = (id: string| undefined) => {
+export const useCharacter = (id: string| undefined) => {
 
    const {data, error, loading } = useQuery(GET_CHARACTER, {
     variables: {
@@ -30,4 +32,3 @@ query GetCharacter($id: ID!){
 }
 
 
-export default useCharacters;

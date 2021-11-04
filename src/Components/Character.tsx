@@ -1,9 +1,9 @@
 import { useParams } from 'react-router';
-import useCharacter from '../Query_hooks/useCharacter';
+import { useCharacter } from '../Query_hooks/useCharacter';
 
 interface Episode {
-  name: String,
-  episode: String
+  name: string,
+  episode: string
 }
 
 
@@ -20,17 +20,19 @@ export default function Character() {
    return (<div className="Character">
 
 
-  <img src={data.character.image} alt={data.character.name} width={400} height={400}/>
+  <img src={data.character.image} alt={data.character.name} className="Character-img"/>
 
   <div className='Character-content'>
-    <h2>{data.character.name}</h2>
-    <p>{data.character.gender}</p>
+    <h2 className="Character-name">{data.character.name}</h2>
+    <p className="Character-gender">{data.character.gender}</p>
+    <p className="Character-status">{data.character.status}</p>
   </div>
   <div className="Character-episode">
 
     {data.character.episode.map((episode: Episode) => {
-        return <div>
-          <div key={data.character.name}>
+
+        return <div key={episode.name} style={{flex: '0 0 25%', margin: 10}}>
+          <div style={{marginBottom: 10}}>
           {episode.name}
           </div>
           <b>{episode.episode}</b>

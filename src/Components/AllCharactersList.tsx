@@ -2,6 +2,8 @@ import { useCharacters } from '../Query_hooks/useCharacters';
 import Pagination from './Pagination';
 import LinksAndDescribe from './LinksAndDescribe';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+
 
 
 interface Character {
@@ -11,16 +13,24 @@ interface Character {
   gender: string;
   species: string;
   episode: Episode[]
-  };
+};
 
 interface Episode {
   episode: string
 };
 
 
-
 function AllCharactersList() {
-  const {error, loading, data} =  useCharacters();
+
+  const [page, setPage] = useState(1);
+
+
+  const {error, loading, data} =  useCharacters(page);
+
+  // useEffect( () => {
+    // const {...error, loading, data} =  useCharacters(page);
+
+  // }, [page])
 
   if(error) return <div>Something went wrong..</div>
 
@@ -30,7 +40,7 @@ function AllCharactersList() {
     <LinksAndDescribe/>
      {data.characters.results.map( (char: Character) => {
 
-    return  <div className="card" key={char.name}>
+    return  <div className="card" key={char.id}>
               <img src={char.image} alt={char.name} className="card-image" style={{
                 width: 43,
                 height: 68,
@@ -52,10 +62,11 @@ function AllCharactersList() {
               </button>
             </div>
   })}
-  <Pagination/>
+  <Pagination pages={data.characters.info.pages} setPage={setPage}/>
   </div>
 
 }
+
 
 export default AllCharactersList;
 

@@ -1,6 +1,18 @@
+
 import ReactPaginate from 'react-paginate';
 
-export default function Pagination() {
+
+
+export default function Pagination (props: {pages: number, setPage: React.Dispatch<React.SetStateAction<number>>}) {
+
+
+  const changePage = (selectedItem: {selected: number}) => {
+
+    props.setPage(selectedItem.selected + 1);
+
+  };
+
+
 
   return (
     <div style={{
@@ -9,12 +21,10 @@ export default function Pagination() {
       <ReactPaginate
         nextLabel={">"}
         previousLabel={"<"}
-        pageCount={15}
+        pageCount={props.pages}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
-
-        // onPageChange={HandlePageLink}
-
+        onPageChange={changePage}
         containerClassName={'pagination'}
         pageClassName={'page-item'}
         pageLinkClassName={'page-link'}
@@ -24,6 +34,7 @@ export default function Pagination() {
         activeClassName={'page-active'}
       />
     </div>
+
   )
 
 }
