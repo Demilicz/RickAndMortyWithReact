@@ -2,7 +2,7 @@ import { useCharacters } from '../Query_hooks/useCharacters';
 import Pagination from './Pagination';
 import LinksAndDescribe from './LinksAndDescribe';
 import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 
 
@@ -24,13 +24,21 @@ function AllCharactersList() {
 
   const [page, setPage] = useState(1);
 
-
   const {error, loading, data} =  useCharacters(page);
 
-  // useEffect( () => {
-    // const {...error, loading, data} =  useCharacters(page);
 
-  // }, [page])
+  useEffect(() => {
+
+    setPage(Number(localStorage.getItem('page')));
+
+  } , []);
+  
+  useEffect(() => {
+    window.localStorage.setItem('page', String(page));
+  }, [page]);
+
+
+
 
   if(error) return <div>Something went wrong..</div>
 
@@ -47,6 +55,9 @@ function AllCharactersList() {
                 objectFit: "cover"
               }}/>
               <div className="card-id">{char.id}</div>
+
+
+
               <Link to={`/${char.id}`} className="card-name">{char.name}</Link>
               <div className="card-gender">
                 { char.gender === "Male" && <i className="_icon-male_black_24dp" style={ { fontSize: 20, marginRight: 10}}></i> }
@@ -61,6 +72,8 @@ function AllCharactersList() {
                 <i className="card-icon _icon-star_black_24dp"></i>
               </button>
             </div>
+
+
   })}
   <Pagination pages={data.characters.info.pages} setPage={setPage}/>
   </div>

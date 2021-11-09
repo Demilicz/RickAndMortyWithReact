@@ -1,4 +1,3 @@
-
 import ReactPaginate from 'react-paginate';
 
 
@@ -6,11 +5,17 @@ import ReactPaginate from 'react-paginate';
 export default function Pagination (props: {pages: number, setPage: React.Dispatch<React.SetStateAction<number>>}) {
 
 
+
+
   const changePage = (selectedItem: {selected: number}) => {
 
     props.setPage(selectedItem.selected + 1);
 
+
   };
+
+
+
 
 
 
