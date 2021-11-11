@@ -138,18 +138,22 @@
   font-size: 16px;
 }
 
-.page-active {
+.active {
   background: #11B0C8;
   color: #FFFFFF;
 }
 
-.page-link {
+.disabled {
+  opacity: 0.5;
+}
+
+/* .page-link {
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 
 /* Character Section  */

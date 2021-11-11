@@ -32,7 +32,7 @@ function AllCharactersList() {
     setPage(Number(localStorage.getItem('page')));
 
   } , []);
-  
+
   useEffect(() => {
     window.localStorage.setItem('page', String(page));
   }, [page]);
@@ -75,7 +75,7 @@ function AllCharactersList() {
 
 
   })}
-  <Pagination pages={data.characters.info.pages} setPage={setPage}/>
+  <Pagination pages={data.characters.info.pages} setPage={setPage} page={page}/>
   </div>
 
 }

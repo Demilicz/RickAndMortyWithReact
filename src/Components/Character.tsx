@@ -9,7 +9,7 @@ interface Episode {
 
 export default function Character() {
 
-  const { id } = useParams< {id: string}>();
+  const { id } = useParams<{id: string}>();
 
   const {error, loading, data} =  useCharacter(id);
 
