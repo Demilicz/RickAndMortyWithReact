@@ -8,19 +8,53 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
 
   const numberOfPages: Array<Paginate> = [] ;
 
+
   for (let i = 1; i <= props.pages; i++) {
     numberOfPages.push(i);
   }
 
-  const [currentButton, setCurrentButton] = useState(props.page);
 
-  const [arrOfCurrButtons, setArrOfCurrButtons] = useState<Paginate[]>([]);
+  const [currentButton, setCurrentButton] = useState<number>(props.page);
+
+  const [arrOfCurrButtons, setArrOfCurrButtons] = useState<Paginate[]>([1, 2, 3, 4, '...', numberOfPages.length]);
+
+  const [currentDot, setCurrentDot] = useState<string>('...');
+
+
+  const cheakButton = (item: Paginate) => {
+    if(typeof item === "number") {
+      setCurrentButton(item)
+    }
+    if (typeof item === "string") {
+      setCurrentDot(item)
+    }
+  }
+
+
+
+
+  useEffect(() => {
+
+    setCurrentButton(Number(localStorage.getItem('currentButton')));
+
+    setArrOfCurrButtons(JSON.parse(localStorage.getItem('arrOfCurrButtons')!));
+
+  } , []);
+
+  useEffect(() => {
+    window.localStorage.setItem('currentButton', String(currentButton));
+
+  }, [currentButton]);
+
+  useEffect(() => {
+    window.localStorage.setItem('arrOfCurrButtons', JSON.stringify(arrOfCurrButtons));
+
+  }, [arrOfCurrButtons]);
 
 
   useEffect(() => {
 
     let tempNumberOfPages: Array<Paginate> = [...arrOfCurrButtons];
-
     let dotsInitial = '...';
     let dotsLeft = '... ';
     let dotsRight = ' ...';
@@ -38,7 +72,8 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
       tempNumberOfPages = [...sliced, dotsInitial, numberOfPages.length]
     }
 
-    else if (currentButton > 4 && currentButton < numberOfPages.length - 2) {               // from 5 to 8 -> (10 - 2)
+    else if (currentButton > 4 && currentButton < numberOfPages.length - 2) {
+
       const sliced1 = numberOfPages.slice(currentButton - 2, currentButton)                 // sliced1 (5-2, 5) -> [4,5]
       const sliced2 = numberOfPages.slice(currentButton, currentButton + 1)                 // sliced1 (5, 5+1) -> [6]
       tempNumberOfPages = ([1, dotsLeft, ...sliced1, ...sliced2, dotsRight, numberOfPages.length]) // [1, '...', 4, 5, 6, '...', 10]
@@ -49,30 +84,42 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
       tempNumberOfPages = ([1, dotsLeft, ...sliced])
     }
 
-    // else if (currentButton === dotsInitial) {
-    //   // [1, 2, 3, 4, "...", 10].length = 6 - 3  = 3
-    //   // arrOfCurrButtons[3] = 4 + 1 = 5
-    //   // or
-    //   // [1, 2, 3, 4, 5, "...", 10].length = 7 - 3 = 4
-    //   // [1, 2, 3, 4, 5, "...", 10][4] = 5 + 1 = 6
-    //   setCurrentButton(arrOfCurrButtons[arrOfCurrButtons.length-3] + 1)
-    // }
-    // else if (currentButton === dotsRight) {
-    //   setCurrentButton(arrOfCurrButtons[3] + 2)
-    // }
+    if (currentDot === dotsInitial) {
+      // [1, 2, 3, 4, "...", 10].length = 6 - 3  = 3
+      // arrOfCurrButtons[3] = 4 + 1 = 5
+      // or
+      // [1, 2, 3, 4, 5, "...", 10].length = 7 - 3 = 4
+      // [1, 2, 3, 4, 5, "...", 10][4] = 5 + 1 = 6
+      // let button: number = arrOfCurrButtons[arrOfCurrButtons.length-3];
 
-    // else if (currentButton === dotsLeft) {
-    //   setCurrentButton(arrOfCurrButtons[3] - 2)
-    // }
+      let temArray = arrOfCurrButtons.filter( (item) => typeof item === 'number' );
+
+      console.log(temArray);
+
+
+      console.log(arrOfCurrButtons[arrOfCurrButtons.length-3]);
+
+      // setCurrentButton(arrOfCurrButtons[arrOfCurrButtons.length-3] + 1)
+    }
+
+    else if (currentDot === dotsRight) {
+      console.log(arrOfCurrButtons[3]);
+    }
+
+    else if (currentDot === dotsLeft) {
+      console.log(arrOfCurrButtons[3]);
+
+    }
 
     setArrOfCurrButtons(tempNumberOfPages);
+
 
     props.setPage(currentButton);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentButton])
+  }, [currentButton, currentDot])
 
-console.log(currentButton);
+
 
 
 
@@ -91,9 +138,8 @@ console.log(currentButton);
           return <li
                     key={index}
                     className={`page-item ${currentButton === item ? 'active' : ''}`}
-                    // onClick={() => setCurrentButton(item)}
+                    onClick={() => cheakButton(item)}
                     >
-
                     {item}
                   </li>
         }))}
@@ -101,7 +147,7 @@ console.log(currentButton);
 
         <li
           className={`page-item ${currentButton === numberOfPages.length ? 'disabled' : ''}`}
-          onClick={() => setCurrentButton(prev => prev >= numberOfPages.length ? prev : prev + 1)}>
+          onClick= {() => setCurrentButton(prev => prev >= numberOfPages.length ? prev : prev + 1) }>
           {">"}
           </li>
       </ul>
