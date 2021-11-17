@@ -19,8 +19,6 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
   const [arrOfCurrButtons, setArrOfCurrButtons] = useState<Paginate[]>([1, 2, 3, 4, '...', numberOfPages.length]);
 
 
-
-
   const cheakButton = (item: Paginate) => {
 
 
@@ -56,7 +54,6 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
         }
     }
   }
-
 
   useEffect(() => {
     setCurrentButton(Number(localStorage.getItem('currentButton')));
@@ -109,9 +106,6 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
   }, [currentButton])
 
 
-
-
-
   return (
     <div style={{
       borderBottom: "1px solid #A9B1BD"
@@ -148,3 +142,6 @@ export default function Pagination (props: {pages: number, setPage: React.Dispat
   )
 
 }
+
+
+

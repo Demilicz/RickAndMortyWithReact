@@ -3,6 +3,8 @@ import Pagination from './Pagination';
 import LinksAndDescribe from './LinksAndDescribe';
 import { Link } from "react-router-dom";
 import { useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Store/store';
 
 
 
@@ -26,6 +28,8 @@ function AllCharactersList() {
 
   const {error, loading, data} =  useCharacters(page);
 
+  const favorites = useSelector((state: RootState) =>  state.favorite.value);
+
 
   useEffect(() => {
 
@@ -44,10 +48,11 @@ function AllCharactersList() {
 
   if(loading) return <div>It's loading...</div>
 
+
+
   return <div>
     <LinksAndDescribe/>
      {data.characters.results.map( (char: Character) => {
-
     return  <div className="card" key={char.id}>
               <img src={char.image} alt={char.name} className="card-image" style={{
                 width: 43,
@@ -68,7 +73,9 @@ function AllCharactersList() {
                 </div>
               <div className="card-species">{char.species}</div>
               <div className="card-episode">{char.episode[char.episode.length - 1].episode}</div>
-              <button className="card-button">
+              <button className="card-button" onClick={()=> {
+
+              }}>
                 <i className="card-icon _icon-star_black_24dp"></i>
               </button>
             </div>
@@ -82,5 +89,8 @@ function AllCharactersList() {
 
 
 export default AllCharactersList;
+
+
+
 
 
