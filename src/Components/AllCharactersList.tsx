@@ -3,8 +3,9 @@ import Pagination from './Pagination';
 import LinksAndDescribe from './LinksAndDescribe';
 import { Link } from "react-router-dom";
 import { useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../Store/store';
+import {  useDispatch } from 'react-redux';
+
+import { addFavObject } from '../features/favoriteSlice';
 
 
 
@@ -28,7 +29,14 @@ function AllCharactersList() {
 
   const {error, loading, data} =  useCharacters(page);
 
-  const favorites = useSelector((state: RootState) =>  state.favorite.value);
+
+  const dispatch = useDispatch();
+
+  const handleFavoriteObj = (item: Character) => {
+
+    dispatch(addFavObject(item));
+
+  }
 
 
   useEffect(() => {
@@ -73,9 +81,7 @@ function AllCharactersList() {
                 </div>
               <div className="card-species">{char.species}</div>
               <div className="card-episode">{char.episode[char.episode.length - 1].episode}</div>
-              <button className="card-button" onClick={()=> {
-
-              }}>
+              <button className="card-button" onClick={()=> {handleFavoriteObj(char)}}>
                 <i className="card-icon _icon-star_black_24dp"></i>
               </button>
             </div>
