@@ -107,11 +107,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #11B0C8;
+  transition: all 0.1s ease-out 0s;
+  font-size: 24px;
 }
 
-.card-icon {
-  color: #11B0C8;
-  font-size: 24px;
+
+.card-button:active {
+
+  background:#11B0C8;
+  color: #fff;
+
 }
 
 
@@ -187,4 +193,29 @@
   width: 300px;
   height: 300px;
   margin: 60px 140px 60px 140px;
+}
+
+
+/*  helped classes  */
+
+.no_favorite {
+  display: flex;
+  color: #11B0C8;
+  font-size: 24px;
+  margin-top: 120px;
+  justify-content: center;
+}
+.loading {
+  display: flex;
+  color: #11B0C8;
+  font-size: 24px;
+  margin-top: 120px;
+  justify-content: center;
+}
+.error {
+  display: flex;
+  color: red;
+  font-size: 24px;
+  margin-top: 120px;
+  justify-content: center;
 }

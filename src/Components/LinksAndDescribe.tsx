@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function LinksAndDescribe() {
+export default function LinksAndDescribe(props:{lastString: string }) {
 
   return <div>
     <div style={{padding: "24px 0 17px 0"}}>
@@ -32,7 +32,7 @@ export default function LinksAndDescribe() {
       <p style={{marginLeft: 153}}>Gender</p>
       <p style={{marginLeft: 152}}>Species</p>
       <p style={{marginLeft: 149}}>Last Episode</p>
-      <p style={{marginLeft: 116}}>Add to Favorite</p>
+      <p style={{marginLeft: 116}}>{props.lastString}</p>
     </div>
   </div>
 

@@ -27,6 +27,7 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavObject: (state, action: PayloadAction<Character>) => {
+
       state.value.push(action.payload);
     },
     removeFavObject:(state, action: PayloadAction<Character>) => {
