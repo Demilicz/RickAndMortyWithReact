@@ -1,14 +1,34 @@
-// import { removeFavObject } from '../features/favoriteSlice';
-import { useSelector } from 'react-redux';
+import { removeFavObject } from '../features/favoriteSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import LinksAndDescribe from './LinksAndDescribe';
 import { RootState } from '../Store/store';
 import { Link } from "react-router-dom";
 
+interface Character {
+  name: string;
+  id: string;
+  image: string;
+  gender: string;
+  species: string;
+  episode: Episode[]
+};
 
+interface Episode {
+  episode: string
+};
 
 function Favorites() {
 
   const stateFavoritesItems = useSelector((state: RootState) =>  state.favorite.value);
+
+  const dispatch = useDispatch();
+
+  const deleteObj = (object: Character) => {
+
+    const cheakIndex = stateFavoritesItems.findIndex((elem: Character) => elem === object );
+
+    dispatch(removeFavObject(cheakIndex))
+  }
 
   return <div>
           <LinksAndDescribe lastString={'Remove from Favorite'}/>
@@ -31,7 +51,7 @@ function Favorites() {
                 </div>
                 <div className="card-species">{item.species}</div>
               <div className="card-episode">{item.episode[item.episode.length - 1].episode}</div>
-              <button className="card-button" onClick={()=> {}}>
+              <button className="card-button-delete" onClick={() => {deleteObj(item)}}>
                 <i className="_icon-star_black_24dp"></i>
               </button>
             </div>

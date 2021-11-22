@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+
+
 interface Character {
   name: string;
   id: string;
@@ -30,8 +32,10 @@ export const favoritesSlice = createSlice({
 
       state.value.push(action.payload);
     },
-    removeFavObject:(state, action: PayloadAction<Character>) => {
-      // here I need to do some logic of removing object by id or something else
+    removeFavObject:(state, action: PayloadAction<number>) => {
+
+      state.value.splice(action.payload, 1);
+      
     }
   }
 })

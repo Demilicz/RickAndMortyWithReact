@@ -112,12 +112,27 @@
   font-size: 24px;
 }
 
+.card-button-delete {
+  width: 43px;
+  height: 43px;
+  border: 2px solid #11B0C8;
+  background:#11B0C8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transition: all 0.1s ease-out 0s;
+  font-size: 24px;
+}
+.card-button-delete:active {
+  background:#fff;
+  color: #11B0C8;
+}
 
 .card-button:active {
-
   background:#11B0C8;
   color: #fff;
-
 }
 
 

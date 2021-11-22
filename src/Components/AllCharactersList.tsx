@@ -88,7 +88,7 @@ function AllCharactersList() {
                 </div>
               <div className="card-species">{char.species}</div>
               <div className="card-episode">{char.episode[char.episode.length - 1].episode}</div>
-              <button className="card-button" onClick={()=> {handleFavoriteObj(char)}}>
+              <button className="card-button" onClick={() => {handleFavoriteObj(char)}}>
                 <i className="_icon-star_black_24dp"></i>
               </button>
             </div>
